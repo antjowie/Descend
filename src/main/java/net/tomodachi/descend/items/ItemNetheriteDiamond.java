@@ -10,7 +10,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class ItemNetheriteDiamond extends ItemBase{
+public class ItemNetheriteDiamond extends Item implements IItem{
     public static final String ID = "netherite_diamond";
     public ItemNetheriteDiamond() {
         super(new FabricItemSettings().maxCount(16));

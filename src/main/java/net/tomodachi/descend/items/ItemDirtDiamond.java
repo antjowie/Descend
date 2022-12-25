@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ItemDirtDiamond extends ItemBase {
+public class ItemDirtDiamond extends Item implements IItem {
     public static final String ID = "dirt_diamond";
     public ItemDirtDiamond() {
         super(new FabricItemSettings().maxCount(16));
