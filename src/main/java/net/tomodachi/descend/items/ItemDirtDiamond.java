@@ -1,23 +1,29 @@
 package net.tomodachi.descend.items;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-public class ItemDirtDiamond extends ItemBase{
+import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
+
+public class ItemDirtDiamond extends ItemBase {
     public static final String ID = "dirt_diamond";
-    public static final Item ITEM = new Item(new FabricItemSettings());
-
-    @Override
-    public boolean ShouldRegister() {
-        return false;
+    public ItemDirtDiamond() {
+        super(new FabricItemSettings().maxCount(16));
+        FuelRegistry.INSTANCE.add(this, 300);
     }
-
     @Override
     public String GetID() {
         return ID;
     }
 
     @Override
-    public Item GetItem() {
-        return ITEM;
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        user.playSound(SoundEvents.BLOCK_GILDED_BLACKSTONE_BREAK, 1.0F, 1.0F);
+        return TypedActionResult.success(user.getStackInHand(hand));
     }
 }

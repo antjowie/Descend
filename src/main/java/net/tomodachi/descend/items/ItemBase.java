@@ -7,16 +7,10 @@ import net.minecraft.util.Identifier;
 
 import static net.tomodachi.descend.DescendMod.MOD_ID;
 
-public abstract class ItemBase {
+public abstract class ItemBase extends Item{
+    public ItemBase(Settings settings) {
+        super(settings);
+    }
+
     public abstract String GetID();
-    public abstract Item GetItem();
-
-    public boolean ShouldRegister() {
-        return true;
-    }
-
-    public final void Register()
-    {
-        Registry.register(Registries.ITEM, new Identifier(MOD_ID, GetID()), GetItem());
-    }
 }
